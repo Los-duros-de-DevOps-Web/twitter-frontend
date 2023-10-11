@@ -1,17 +1,19 @@
-import useSWR from 'swr';
+import useSWR from "swr";
 
-import fetcher from '@/libs/fetcher';
+import fetcher from "@/libs/fetcher";
 
 const useNotifications = (userId?: string) => {
-  const url = userId ? `/api/notifications/${userId}` : null;
+  const url = userId
+    ? `http://localhost:3004/api/notifications/${userId}`
+    : null;
   const { data, error, isLoading, mutate } = useSWR(url, fetcher);
 
   return {
     data,
     error,
     isLoading,
-    mutate
-  }
+    mutate,
+  };
 };
 
 export default useNotifications;

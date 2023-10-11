@@ -41,7 +41,7 @@ const EditModal = () => {
     try {
       setIsLoading(true);
 
-      await axios.patch("http://localhost:/api/edit", {
+      await axios.patch("http://localhost:3000/api/edit", {
         name,
         username,
         bio,
