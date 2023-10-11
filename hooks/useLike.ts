@@ -30,9 +30,10 @@ const useLike = ({ postId, userId }: { postId: string; userId?: string }) => {
 
       if (hasLiked) {
         request = () =>
-          axios.delete("http://localhost:3000/api/like", { data: { postId } });
+          axios.delete(`${process.env.URL_UTIL}api/like`, { data: { postId } });
       } else {
-        request = () => axios.post("http://localhost:3000/api/like", { postId });
+        request = () =>
+          axios.post(`${process.env.URL_UTIL}api/like`, { postId });
       }
 
       await request();

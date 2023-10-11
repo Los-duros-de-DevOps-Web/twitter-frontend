@@ -4,7 +4,7 @@ import fetcher from "@/libs/fetcher";
 
 const useUser = (userId: string) => {
   const { data, error, isLoading, mutate } = useSWR(
-    userId ? `http://localhost:3001/api/users/${userId}` : null,
+    userId ? `${process.env.URL_USER}api/users/${userId}` : null,
     fetcher
   );
 

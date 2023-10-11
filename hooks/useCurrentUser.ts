@@ -4,7 +4,7 @@ import fetcher from "@/libs/fetcher";
 
 const useCurrentUser = () => {
   const { data, error, isLoading, mutate } = useSWR(
-    "http://localhost:3002/current",
+    `${process.env.URL_AUTH}current`,
     fetcher
   );
 

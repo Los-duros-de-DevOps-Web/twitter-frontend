@@ -33,7 +33,7 @@ const RegisterModal = () => {
     try {
       setIsLoading(true);
 
-      await axios.post("http://localhost:3001/api/register", {
+      await axios.post(`${process.env.URL_USER}api/register`, {
         email,
         password,
         username,
@@ -44,7 +44,7 @@ const RegisterModal = () => {
 
       toast.success("Account created.");
 
-      await axios.post("http://localhost:3002/login", { email, password });
+      await axios.post(`${process.env.URL_AUTH}login`, { email, password });
 
       registerModal.onClose();
       location.reload();

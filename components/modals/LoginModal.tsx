@@ -20,7 +20,7 @@ const LoginModal = () => {
     try {
       setIsLoading(true);
 
-      await axios.post("http://localhost:3002/login", { email, password });
+      await axios.post(`${process.env.URL_AUTH}login`, { email, password });
 
       toast.success("Logged in");
 

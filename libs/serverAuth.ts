@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const serverAuth = async () => {
-  const data = await axios.get("http://localhost:3002/current");
+  const data = await axios.get(`${process.env.URL_AUTH}current`);
   const currentUser = data.data;
   return { currentUser };
 };

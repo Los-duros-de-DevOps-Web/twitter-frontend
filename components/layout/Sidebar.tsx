@@ -35,7 +35,7 @@ const Sidebar = () => {
   ];
 
   const logout = () => {
-    axios.delete("http://localhost:3002/logout");
+    axios.delete(`${process.env.URL_AUTH}logout`);
     location.reload();
   };
 

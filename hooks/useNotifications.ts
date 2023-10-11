@@ -4,7 +4,7 @@ import fetcher from "@/libs/fetcher";
 
 const useNotifications = (userId?: string) => {
   const url = userId
-    ? `http://localhost:3004/api/notifications/${userId}`
+    ? `${process.env.URL_POSTNOTI}api/notifications/${userId}`
     : null;
   const { data, error, isLoading, mutate } = useSWR(url, fetcher);
 
