@@ -36,7 +36,7 @@ jobs:
         with:
           username: ${{ secrets.AZURE_ACR_USERNAME }}
           password: ${{ secrets.AZURE_ACR_PASSWORD }}
-          login-server: ${{ secrets.ACR_NAME }}.azurecr.io
+          login-server: acrtwitter.azurecr.io
 
       - name: Build and push Docker images to Azure Container Registry
         if: github.event_name == 'push'
