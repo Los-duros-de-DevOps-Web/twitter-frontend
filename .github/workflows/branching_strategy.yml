@@ -1,0 +1,52 @@
+name: GitFlow Automation
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout del Código
+      uses: actions/checkout@v2
+
+    - name: Configurar Git
+      run: |
+        git config user.name "${{ github.actor }}"
+        git config user.email "${{ github.actor }}@users.noreply.github.com"
+
+    - name: Crear Rama de Release
+      run: |
+        git checkout develop
+        git pull origin develop
+        git checkout -b release/v${{ github.run_number }}
+        git push origin release/v${{ github.run_number }}
+
+    - name: Crear Pull Request de Release a Main
+      uses: peter-evans/create-pull-request@v3
+      with:
+        token: ${{ secrets.PAT}}
+        branch: release/v${{ github.run_number }}
+        base: main
+        title: "Merge Release v${{ github.run_number }} to Main"
+
+    - name: Solicitar Revisores
+      uses: actions/request-reviewer@v2
+      with:
+        reviewers: GabrielSB19,CamiloCJ09  
+
+  cleanup:
+    needs: release
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Eliminar Rama de Feature (si se ha fusionado con develop)
+      run: |
+        FEATURE_BRANCHES=$(git branch --merged develop | grep 'feature/')
+        for branch in $FEATURE_BRANCHES; do
+          git push origin --delete $branch
+          git branch -d $branch
+        done
