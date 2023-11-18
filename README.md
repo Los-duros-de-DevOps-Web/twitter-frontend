@@ -1,2 +1,2 @@
 # twitter-frontend
-It's a Twitter Copy
+It's the twitter frontend
