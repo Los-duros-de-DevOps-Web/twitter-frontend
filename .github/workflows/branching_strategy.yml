@@ -49,16 +49,3 @@ jobs:
           echo "El commit no es un merge desde una rama de feature en develop. No se ejecutarán acciones adicionales."
           exit 0
         fi
-
-  cleanup:
-    needs: release
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Eliminar Rama de Feature (si se ha fusionado con develop)
-      run: |
-        FEATURE_BRANCHES=$(git branch --merged develop | grep 'feature/')
-        for branch in $FEATURE_BRANCHES; do
-          git push origin --delete $branch
-          git branch -d $branch
-        done
