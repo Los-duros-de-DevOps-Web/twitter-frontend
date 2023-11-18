@@ -28,5 +28,7 @@ COPY --from=builder /twitter-frontend/.next ./.next
 COPY --from=builder /twitter-frontend/node_modules ./node_modules
 COPY --from=builder /twitter-frontend/package.json ./package.json
 
+
+# Exponer el puerto 3003
 EXPOSE 3003
 CMD ["yarn", "start"]

@@ -35,7 +35,7 @@ jobs:
           # Crear el Pull Request de Release a Main
           uses: peter-evans/create-pull-request@v3
           with:
-            token: ${{ secrets.PAT }}
+            token: ${{ secrets.GITHUB_TOKEN }}
             branch: release/v${{ github.run_number }}
             base: main
             title: "Merge Release v${{ github.run_number }} to Main"
