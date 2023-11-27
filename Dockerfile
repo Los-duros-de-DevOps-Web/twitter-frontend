@@ -2,7 +2,11 @@
 FROM node:lts as dependencies
 WORKDIR /twitter-frontend
 COPY package.json yarn.lock ./
+
 RUN yarn install --frozen-lockfile
+
+# Generación de Prisma
+RUN npx prisma generate
 
 # Etapa 2: Reconstrucción del código fuente
 FROM node:lts as builder
@@ -11,8 +15,6 @@ COPY . .
 COPY --from=dependencies /twitter-frontend/node_modules ./node_modules
 RUN yarn build
 
-# Generación de Prisma
-RUN npx prisma generate
 
 # Etapa 3: Imagen de Producción
 FROM node:lts as runner
