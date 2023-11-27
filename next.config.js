@@ -6,7 +6,7 @@ const nextConfig = {
     URL_USER: process.env.URL_USER,
     URL_AUTH: process.env.URL_AUTH,
     URL_POSTNOTI: process.env.URL_POSTNOTI,
-  },
+  }
 };
 
 module.exports = nextConfig;

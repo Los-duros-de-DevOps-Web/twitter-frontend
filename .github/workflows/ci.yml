@@ -21,11 +21,7 @@ jobs:
         
       - name: Install Dependencies
         run: npm install
-        
-      - name: Build the app
-        if: github.event_name == 'push'
-        run: npm run build
-
+    
       - name: Docker Setup Buildx
         if: github.event_name == 'push'
         uses: docker/setup-buildx-action@v3.0.0
@@ -36,7 +32,7 @@ jobs:
         with:
           username: ${{ secrets.AZURE_ACR_USERNAME }}
           password: ${{ secrets.AZURE_ACR_PASSWORD }}
-          login-server: ${{ secrets.ACR_NAME }}.azurecr.io
+          login-server: ${{ secrets.ACR_NAME }}
 
       - name: Build and push Docker images to Azure Container Registry
         if: github.event_name == 'push'
@@ -45,4 +41,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.ACR_NAME }}.azurecr.io/twitter-frontend:latest
+          tags: ${{ secrets.ACR_NAME }}/twitter-frontend:latest
