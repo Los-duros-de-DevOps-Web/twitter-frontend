@@ -49,5 +49,5 @@ jobs:
                        --build-arg AUTH_URL=${AUTH_URL} \
                        --build-arg POST_NOTI_URL=${POST_NOTI_URL} \
                        --build-arg DATABASE_URL=${DATABASE_URL} \
-                       -t $ACR_REGISTRY/your-image-name:latest .
-          docker push $ACR_REGISTRY/your-image-name:latest
+                       -t $ACR_REGISTRY/twitter-frontend:latest .
+          docker push $ACR_REGISTRY/twitter-frontend:latest
