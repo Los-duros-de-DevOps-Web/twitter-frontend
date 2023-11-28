@@ -1,3 +1,10 @@
+# Etapa 0: Variables de entorno de secretos
+ENV UTIL_URL=${{secrets.UTIL_URL}}
+ENV USER_URL=${{secrets.USER_URL}}
+ENV AUTH_URL=${{secrets.AUTH_URL}}
+ENV POST_NOTI_URL=${{secrets.POST_NOTI_URL}}
+ENV DATABASE_URL=${{secrets.DATABASE_URL}}
+
 # Etapa 1: Instalación de dependencias
 FROM node:lts as dependencies
 WORKDIR /twitter-frontend
