@@ -42,3 +42,9 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.ACR_NAME }}/twitter-frontend:latest
+          secrets: |
+            "UTIL_URL=${{ secrets.UTIL_URL}}"
+            "USER_URL=${{ secrets.USER_URL}}"
+            "AUTH_URL=${{ secrets.AUTH_URL}}"
+            "POST_NOTI_URL=${{ secrets.POST_NOTI_URL}}"
+            "DATABASE_URL=${{ secrets.DATABASE_URL}}"
