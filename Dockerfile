@@ -1,10 +1,20 @@
 # Etapa 0: Variables de entorno de secretos
-
+ARG UTIL_URL
+ARG USER_URL
+ARG AUTH_URL
+ARG POST_NOTI_UTL
+ARG DATABASE_URL
 # Etapa 1: Instalación de dependencias
 FROM node:lts as dependencies
 WORKDIR /twitter-frontend
+
 COPY package.json yarn.lock ./
 
+ENV UTIL_URL=$UTIL_URL
+ENV USER_URL=$USER_URL
+ENV AUTH_URL=$AUTH_URL
+ENV POST_NOTI_UTL=$POST_NOTI_UTL
+ENV DATABASE_URL=$DATABASE_URL
 
 RUN yarn install --frozen-lockfile
 
